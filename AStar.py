@@ -67,13 +67,13 @@ def AStar(neigh):
         
         if current == endNode:
             temp = current
-            if temp.state != 1 and temp.state != 2:
+            if temp.state != 1:
                 temp.state = 5
             path.append(temp)
             while temp.previous:
                 draw_all()
                 time.sleep(sleepTime)
-                if temp.previous.state != 1 and temp.previous.state != 2:
+                if temp.previous.state != 1:
                     temp.previous.state = 5
                 path.append(temp.previous)
                 temp = temp.previous
@@ -81,7 +81,7 @@ def AStar(neigh):
 
         openSet.remove(current)
         closedSet.append(current)
-        if current.state != 1 and current.state != 2:
+        if current.state != 1:
             current.state = 4
         if neigh == 4:
             currentNeighbours = checkNeighbours4(current.x,current.y)
@@ -97,7 +97,7 @@ def AStar(neigh):
                 tentGScore = current.g + 1
             if neighbour not in openSet:
                 openSet.append(neighbour)
-                if neighbour.state != 1 and neighbour.state != 2:
+                if neighbour.state != 1:
                     neighbour.state = 0
             elif tentGScore >= neighbour.g:
                 continue
@@ -155,10 +155,10 @@ def checkMouseClick(event):
     elif event.button == 3: # right click
         if endNode == None:
             if squares[xIndex][yIndex].state == -1:
-                squares[xIndex][yIndex].state = 2
+                squares[xIndex][yIndex].state = 1
                 endNode = squares[xIndex][yIndex]
         else:
-            if squares[xIndex][yIndex].state == 2:
+            if squares[xIndex][yIndex].state == 1:
                 squares[xIndex][yIndex].state = -1
                 endNode = None
     
