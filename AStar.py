@@ -25,7 +25,7 @@ def create2DArray():
     for i in range(rows):
         row = []
         for j in range(cols):
-            col = Node(WINDOW,i,j,squareHeight,False,False,False)
+            col = Node(WINDOW,i,j,squareHeight)
             row.append(col)
         squares.append(row)
     return squares
